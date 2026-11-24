@@ -52,7 +52,7 @@ public class AutoStartApp {
         ).toAbsolutePath();
     }
 
-    // Adauga aplicatia in pornirea automata din registrul Windows
+    // Configureaza pornirea automata prin registrul Windows
     private static void configureAutostart(JFrame frame) {
 
         try {
@@ -93,8 +93,7 @@ public class AutoStartApp {
                 JOptionPane.showMessageDialog(
                         frame,
                         "Aplicatia a fost adaugata cu succes "
-                                + "in pornirea automata Windows!\n\n"
-                                + "Registrul Windows a fost actualizat.",
+                                + "in pornirea automata Windows!",
                         "Configurare reusita",
                         JOptionPane.INFORMATION_MESSAGE
                 );
@@ -162,6 +161,7 @@ public class AutoStartApp {
         }
     }
 
+    // Creeaza interfata grafica
     private static void createWindow(String time) {
 
         JFrame frame = new JFrame("AutoStartApp");
@@ -221,6 +221,7 @@ public class AutoStartApp {
         JButton filesButton = new JButton(
                 "GESTIONAREA FISIERELOR"
         );
+
         styleButton(
                 filesButton,
                 new Color(40, 105, 165),
@@ -242,7 +243,7 @@ public class AutoStartApp {
                         + javaExe
                         + "\" -cp \""
                         + projectDir
-                        + "\" Main";
+                        + "\" FileRunLauncher";
 
                 new ProcessBuilder(
                         "cmd.exe",
@@ -269,6 +270,7 @@ public class AutoStartApp {
         JButton autostartButton = new JButton(
                 "CONFIGUREAZA PORNIREA AUTOMATA"
         );
+
         styleButton(
                 autostartButton,
                 new Color(35, 135, 95),
@@ -284,6 +286,7 @@ public class AutoStartApp {
         JButton restartButton = new JButton(
                 "REPORNESTE CALCULATORUL"
         );
+
         styleButton(
                 restartButton,
                 new Color(190, 115, 40),
@@ -299,6 +302,7 @@ public class AutoStartApp {
         JButton closeButton = new JButton(
                 "INCHIDE APLICATIA"
         );
+
         styleButton(
                 closeButton,
                 new Color(100, 110, 120),
@@ -348,5 +352,13 @@ public class AutoStartApp {
         button.setOpaque(true);
         button.setPreferredSize(new Dimension(width, height));
         button.setMaximumSize(new Dimension(width, height));
+    }
+}
+
+// Clasa auxiliara pentru lansarea programului FileRun
+class FileRunLauncher {
+
+    public static void main(String[] args) {
+        FileRun.run();
     }
 }
